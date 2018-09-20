@@ -24,33 +24,41 @@ class SelectComponent extends Component {
     selectedOption: null,
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const proxy = "https://cors-anywhere.herokuapp.com/";
-    axios.post(proxy+'http://stage.vcs.resh.edu.ru/login', JSON.stringify({
-      username: 'demo',
-      password: 'demo'
-      })
-    )
-      .then( response => {
-        console.log(response);
-        // const posts = response.data.slice(0, 4);
-        // const updatedPosts = posts.map(post => {
-        //   return {
-        //     ...post,
-        //     name: "Alex"
-        //   }
-        // })
-        // this.setState({posts: updatedPosts})
-      })
-      // .catch((error) => {
-      //   console.log(error)
-      //     this.setState({error: true});
-      // })
     axios.get(proxy + 'http://stage.vcs.resh.edu.ru/api/subject/')
     .then( response => {
       console.log(response);
     })
   }
+
+  // componentDidMount() {
+  //   const proxy = "https://cors-anywhere.herokuapp.com/";
+  //   axios.post(proxy+'http://stage.vcs.resh.edu.ru/login', JSON.stringify({
+  //     username: 'demo',
+  //     password: 'demo'
+  //     })
+  //   )
+  //     .then( response => {
+  //       console.log(response);
+  //       // const posts = response.data.slice(0, 4);
+  //       // const updatedPosts = posts.map(post => {
+  //       //   return {
+  //       //     ...post,
+  //       //     name: "Alex"
+  //       //   }
+  //       // })
+  //       // this.setState({posts: updatedPosts})
+  //     })
+  //     // .catch((error) => {
+  //     //   console.log(error)
+  //     //     this.setState({error: true});
+  //     // })
+  //   axios.get(proxy + 'http://stage.vcs.resh.edu.ru/api/subject/')
+  //   .then( response => {
+  //     console.log(response);
+  //   })
+  // }
 
   handleChange = (selectedOption) => {
     this.setState({ selectedOption });
