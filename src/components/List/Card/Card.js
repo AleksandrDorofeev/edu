@@ -1,14 +1,26 @@
-<div class="grid">
-  <div class="first">
-    <div style="display: flex;flex-direction: column;">
-      <span style="font-size: 20px;margin-bottom: 10px;margin-right: 20px;">Английский язык 7 класс</span>
-      <span style="font-size: 14px;">ID:5667</span>
+import React from 'react';
+
+import './Card.css';
+
+const Card = (props) => {
+  return(
+    <div className="card-grid">
+      <div className="card-first-row">
+        <div className="card-upper">
+          <span className="card-title">{props.title[1]} {props.class[1]}</span>
+          <span className="card-id">ID:{props.id}</span>
+        </div>
+        <div className="card-lower">
+          <span className="card-status">Статус:</span>
+          <span className="card-last-status">{props.status}</span>
+        </div>
+      </div>
+      <div className="card-second-row">Урок № {props.number} - {props.theme}</div>
+      <div className="card-download">
+        <img src="https://via.placeholder.com/150x150" alt="" />
+      </div>
     </div>
-    <div style="display: flex;flex-direction: column;">
-      <span style="margin-bottom: 8px;">Статус:</span>
-      <span style="font-size: 18px;">Передано на экспертизу</span>
-    </div>
-  </div>
-  <div class="second">Урок № 6 - Children and parents</div>
-  <div class="third"><img src="https://via.placeholder.com/150x150" alt=""></div>
-</div>
+  )
+}
+
+export default Card;

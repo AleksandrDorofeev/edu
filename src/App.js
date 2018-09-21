@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import SelectComponent from './components/Select/Select';
+import Card from './components/List/Card/Card';
+import List from './components/List/List';
 import Footer from './containers/Footer/Footer';
 
 class App extends Component {
@@ -11,7 +13,10 @@ class App extends Component {
           <div className="App-title">
             <h1>Заголовок</h1>
           </div>
-          <SelectComponent />
+          {/* <SelectComponent /> */}
+          {/* <Card />
+          <Card /> */}
+          <List />
         </div>
         <Footer />
       </div>
