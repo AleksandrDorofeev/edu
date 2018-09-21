@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import './App.css'
+
 import SelectComponent from './components/Select/Select';
 import Card from './components/List/Card/Card';
 import List from './components/List/List';
@@ -13,9 +15,6 @@ class App extends Component {
           <div className="App-title">
             <h1>Заголовок</h1>
           </div>
-          {/* <SelectComponent /> */}
-          {/* <Card />
-          <Card /> */}
           <List />
         </div>
         <Footer />

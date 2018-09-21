@@ -1,21 +1,19 @@
 .App {
-  text-align: center;
   background-color: #efefef;
   height: 100%;
   display: flex;
   flex-direction: column;
-  /* margin-left: 160px;
-  margin-right: 160px; */
 }
 
 .App-content {
   flex: 1 0 auto;
-  padding-top: 70px;
+  padding-top: 35px;
   padding-bottom: 54px;
-  margin-left: 160px;
-  margin-right: 160px;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .App-title {
   text-align: left;
+  padding-bottom: 28px;
 }

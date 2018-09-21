@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './Card.css';
+import Logo from '../../../assets/word.png'
 
 const Card = (props) => {
   return(
@@ -17,7 +18,8 @@ const Card = (props) => {
       </div>
       <div className="card-second-row">Урок № {props.number} - {props.theme}</div>
       <div className="card-download">
-        <img src="https://via.placeholder.com/150x150" alt="" />
+        <img className="card-logo" src={Logo} alt="" />
+        <a>{props.filename}</a>
       </div>
     </div>
   )

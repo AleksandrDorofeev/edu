@@ -7,7 +7,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 160px;
-  margin-right: 160px;
+  width: 80%;
+  margin: 0 auto;
   height: 90px;
 }

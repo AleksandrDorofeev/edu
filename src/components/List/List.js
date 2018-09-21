@@ -2,25 +2,23 @@ import React, { Component } from 'react';
 import { observer } from "mobx-react";
 import { observable } from "mobx";
 
+import './List.css'
+
 import axios from 'axios';
 import Select from 'react-select';
 
 import Card from './Card/Card';
 
-// import SelectComponent from '../Select/Select';
-
-@observer
 class List extends Component {
-  @observable selectedOption = null
 
   state = {
     cards: [],
-    limit: 5,
+    limit: 30,
     page: 1,
     total: null,
     scrolling: false,
     options: [],
-    selectedOption: null,
+    selectedOption: {value: 11, label: "Английский язык"},
   }
 
   componentWillMount() {
@@ -67,16 +65,6 @@ class List extends Component {
     console.log(this.state.selectedOption)
   }
 
-  // filteredList = () => {
-  //   const { limit, page, selectedOption } = this.state
-  //   const proxy = "https://cors-anywhere.herokuapp.com/";
-  //   const url =`http://stage.vcs.resh.edu.ru/api/scene_plans/?limit=${limit}&page=${page}&subjectId=${selectedOption}`
-  //   axios.get(proxy + url)
-  //   .then( response => {
-  //     console.log(response);
-  //   })
-  // }
-
   loadCards = () => {
     const { limit, page, cards } = this.state
     const proxy = "https://cors-anywhere.herokuapp.com/";
@@ -107,11 +95,6 @@ class List extends Component {
     }), this.loadCards)
   }
 
-  componentDidMount() {
-    console.log(this.state.selectedOption)
-    this.filteredList()
-  }
-
   render() {
     const { selectedOption } = this.state;
 
@@ -126,36 +109,22 @@ class List extends Component {
           number={card.number}
           theme={card.theme}
           status={card.readable_status}
+          filename={card.file_name}
           />
     </li>)})
     return (
-      <div>
-      <Select 
-        value={selectedOption}
-        onChange={this.handleChange}
-        options={this.state.options}/>
-      <ul className="contacts contact-container">
-      {cards
-        // this.state.cards.map(card => {
-        //   return (
-        //     <li key={card.id}>
-        //       <Card 
-        //       // key={card.theme}
-        //       id={card.id}
-        //       title={Object.keys(card.work_program.subject).map(key => card.work_program.subject[key])}
-        //       class={Object.keys(card.work_program.school_class).map(key => card.work_program.school_class[key])}
-        //       number={card.number}
-        //       theme={card.theme}
-        //       status={card.readable_status}
-        //       />
-        // </li>)})
-      }
-    </ul>
-    </div>
-    // return(
-    //   <div>
-    //     {cards}
-    //   </div>
+      <div className="list">
+        <div className="list-select">
+          <span className="list-name">Предмет:</span>
+          <Select className="list-select"
+            value={selectedOption}
+            onChange={this.handleChange}
+            options={this.state.options}/>
+        </div>
+        <ul className="contacts contact-container">
+          {cards}
+        </ul>
+      </div>
     )
   }
 }
