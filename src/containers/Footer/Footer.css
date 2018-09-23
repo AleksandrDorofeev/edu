@@ -11,3 +11,8 @@
   margin: 0 auto;
   height: 90px;
 }
+
+.footer-a {
+  text-decoration: none;
+  color: #0050b2;
+}

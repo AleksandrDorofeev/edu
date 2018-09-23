@@ -71,11 +71,7 @@ class List extends Component {
     const url =`http://stage.vcs.resh.edu.ru/api/scene_plans/?limit=${limit}&page=${page}`
     axios.get(proxy + url)
     .then( response => {
-      console.log(response.data);
-      console.log(response.data.rows);
       const cardsRes = response.data.rows;
-      console.log(cardsRes[0].work_program.subject);
-
       const requestCards = cardsRes.map(card => {
         return {
           ...card
@@ -84,7 +80,6 @@ class List extends Component {
       this.setState({
         cards: [...cards, ...requestCards],
         scrolling: false
-
       })
     })
   }
@@ -102,7 +97,6 @@ class List extends Component {
       return (
         <li key={card.id}>
           <Card 
-          // key={card.theme}
           id={card.id}
           title={Object.keys(card.work_program.subject).map(key => card.work_program.subject[key])}
           class={Object.keys(card.work_program.school_class).map(key => card.work_program.school_class[key])}
