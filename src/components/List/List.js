@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { observer } from "mobx-react";
 import { observable } from "mobx";
 
+import _ from 'lodash';
+
 import './List.css'
 
 import axios from 'axios';
@@ -60,9 +62,28 @@ class List extends Component {
   }
 
   handleChange = (selectedOption) => {
-    this.setState({ selectedOption: selectedOption })
+    this.setState({ selectedOption: selectedOption },
+    () => {
+      console.log(this.state.selectedOption.value);
+      const { cards, limit, page } = this.state
+      console.log(cards);
+        const proxy = "https://cors-anywhere.herokuapp.com/";
+        const url =`http://stage.vcs.resh.edu.ru/api/scene_plans/?limit=${limit}&page=${page}&subjectId=${this.state.selectedOption.value}`
+        axios.get(proxy + url)
+        .then( response => {
+          const cardsRes = response.data.rows;
+          const FilteredCards = cardsRes.map(card => {
+            return {
+              ...card
+            }
+          })
+        this.setState({
+          cards: FilteredCards,
+          scrolling: false
+        })
+      })
+    })
     console.log(`Option selected:`, selectedOption);
-    console.log(this.state.selectedOption)
   }
 
   loadCards = () => {
@@ -97,7 +118,7 @@ class List extends Component {
       return (
         <li key={card.id}>
           <Card 
-          id={card.id}
+          id={card.theme}
           title={Object.keys(card.work_program.subject).map(key => card.work_program.subject[key])}
           class={Object.keys(card.work_program.school_class).map(key => card.work_program.school_class[key])}
           number={card.number}
