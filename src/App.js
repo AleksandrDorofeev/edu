@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 import './App.css'
 
-import SelectComponent from './components/Select/Select';
-import Card from './components/List/Card/Card';
 import List from './components/List/List';
 import Footer from './containers/Footer/Footer';
 

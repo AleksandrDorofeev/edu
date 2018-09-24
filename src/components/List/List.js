@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import { observer } from "mobx-react";
-import { observable } from "mobx";
-
-import _ from 'lodash';
 
 import './List.css'
 
@@ -48,7 +44,6 @@ class List extends Component {
     const proxy = "https://cors-anywhere.herokuapp.com/";
     axios.get(proxy + 'http://stage.vcs.resh.edu.ru/api/subject/')
     .then( response => {
-      console.log(response.data);
       const optionsMap = response.data.map(option => {
         return {
           value: option.id,
@@ -64,9 +59,7 @@ class List extends Component {
   handleChange = (selectedOption) => {
     this.setState({ selectedOption: selectedOption },
     () => {
-      console.log(this.state.selectedOption.value);
-      const { cards, limit, page } = this.state
-      console.log(cards);
+      const { limit, page } = this.state
         const proxy = "https://cors-anywhere.herokuapp.com/";
         const url =`http://stage.vcs.resh.edu.ru/api/scene_plans/?limit=${limit}&page=${page}&subjectId=${this.state.selectedOption.value}`
         axios.get(proxy + url)
